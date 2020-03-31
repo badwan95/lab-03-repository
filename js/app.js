@@ -82,6 +82,15 @@ $(document).ready(function() {
         }
         $(`[class*=${$buttonValue}]`).addClass('visible');
     })
-    // Sort by name
+    // Sort by number of horns
+    $('#sortByHorns').on('click',()=>{
+        $('section').remove();
+        contentArray.sort((a,b)=>{
+            return a.horns - b.horns;
+        });
+        contentArray.forEach(value =>{
+            value.render();
+        });
+    })
 
 });
