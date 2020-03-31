@@ -92,5 +92,20 @@ $(document).ready(function() {
             value.render();
         });
     })
+    $('#byTitle').on('click',()=>{
+        $('section').remove();
+        contentArray.sort((a,b) =>{
+            let firstTitle = a.title.toLowerCase();
+            let secondTitle = b.title.toLowerCase();
+            if (firstTitle > secondTitle){
+                return 1;
+            }else{
+                return -1
+            }
+        });
+        contentArray.forEach(value =>{
+            value.render();
+        });
+    })
 
 });

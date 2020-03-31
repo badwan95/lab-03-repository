@@ -42,10 +42,10 @@ Actual time needed to complete: 50 Minutes
 
 ### Number and name of feature: #4: Sort the images
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 1 hour
 
-Start time: 
+Start time: 4:50 PM and 9:00 PM
 
-Finish time: 
+Finish time: 11:00 PM
 
-Actual time needed to complete: 
+Actual time needed to complete: 2 Hours
