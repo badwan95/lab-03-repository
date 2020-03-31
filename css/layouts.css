@@ -1,0 +1,19 @@
+header{
+    height: 175px;
+}
+main{
+    width: 960px;
+    overflow: hidden;
+}
+section{
+    float: left;
+    height: 500px;
+    width: 45%;
+}
+section img{
+    width: 350px;
+    height: 350px;
+}
+footer{
+    clear: both;
+}
