@@ -91,6 +91,12 @@ $(document).ready(function() {
         contentArray.forEach(value =>{
             value.render();
         });
+        $('section').removeClass('visible');
+        let $buttonValue = $('select option:selected').val();
+        if ($buttonValue === 'default'){
+            $('section').addClass('visible');
+        }
+        $(`[class*=${$buttonValue}]`).addClass('visible');
     })
     $('#byTitle').on('click',()=>{
         $('section').remove();
@@ -102,10 +108,17 @@ $(document).ready(function() {
             }else{
                 return -1
             }
+            
         });
         contentArray.forEach(value =>{
             value.render();
         });
+        $('section').removeClass('visible');
+        let $buttonValue = $('select option:selected').val();
+        if ($buttonValue === 'default'){
+            $('section').addClass('visible');
+        }
+        $(`[class*=${$buttonValue}]`).addClass('visible');
     })
 
 });
