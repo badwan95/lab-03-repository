@@ -13,6 +13,10 @@ h1{
 #photo-template{
     display: none;
 }
+.topButtons{
+    margin: 0 auto;
+    display: flex;
+}
 section h2{
     text-align: center;
     margin: 20px 0;
@@ -22,6 +26,10 @@ section h2{
 section p{
     text-align: center;
     margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 footer{
     text-align: center;
@@ -32,10 +40,21 @@ footer{
 }
 select{
     display: block;
-    margin: 20px auto;
+    margin: 10px auto;
     font-size: 22px;
     background-color: rgb(126, 73, 126);
     color: aqua;
+    padding: 10px;
+    border: 3px solid rgb(37, 46, 33);
+    border-radius: 10px;
+    text-transform: capitalize;
+}
+button{
+    display: inline-block;
+    margin: 20px auto;
+    font-size: 22px;
+    background-color: rgb(173, 38, 173);
+    color: rgb(23, 180, 133);
     padding: 10px;
     border: 3px solid rgb(37, 46, 33);
     border-radius: 10px;

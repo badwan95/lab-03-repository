@@ -1,13 +1,16 @@
 'use strict';
+let contentArray = [];
 $(document).ready(function() {
     // Constructor function for gallery items
     let existingKeywords = [];
+    contentArray = [];
     function Gallery(item) {
       this.image_url = item.image_url;
       this.title = item.title;
       this.description = item.description;
       this.keyword = item.keyword;
       this.horns = item.horns;
+      contentArray.push(this);
     }
     // To render the images and their title and description to the HTML
     Gallery.prototype.render = function() {
@@ -56,6 +59,7 @@ $(document).ready(function() {
         $('section').remove();
         $('option:not(:first)').remove();
         existingKeywords = [];
+        contentArray = [];
         getJsonFirst();
     })
 
@@ -64,6 +68,7 @@ $(document).ready(function() {
         $('section').remove();
         $('option:not(:first)').remove();
         existingKeywords = [];
+        contentArray = [];
         getJsonSecond();
     })
 
@@ -75,6 +80,8 @@ $(document).ready(function() {
         if ($buttonValue === 'default'){
             $('section').addClass('visible');
         }
-        $(`[class*=${$buttonValue}]`).addClass('visible');        
+        $(`[class*=${$buttonValue}]`).addClass('visible');
     })
+    // Sort by name
+
 });
