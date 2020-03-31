@@ -11,15 +11,9 @@ $(document).ready(function() {
     }
     // To render the images and their title and description to the HTML
     Gallery.prototype.render = function() {
-        let $galleryCopy = $('#photo-template').clone();
-        $('#photo-template section').remove();
-        $galleryCopy.find('h2').text(this.title);
-        $galleryCopy.find('img').attr('src',this.image_url);
-        $galleryCopy.removeAttr('id');
-        $galleryCopy.find('p').text(this.description);
-        // $galleryCopy.attr('id', this.keyword)
-        $galleryCopy.attr('class', `${this.keyword} visible`);
-        $('main').append($galleryCopy);
+        let $galleryCopy = $('#photo-template').html();
+        let renderHorns = Mustache.render($galleryCopy,this);
+        $('main').append(renderHorns);
     }
     // To render the unique filter options depending on the keyword
     Gallery.prototype.renderFilter = function () {
@@ -31,23 +25,56 @@ $(document).ready(function() {
             $('select').append($optionCopy);
         }
     }
-    // TO GET THE INFO INSIDE JSON FILE
-    const getJson = function(){
+    // TO GET THE INFO INSIDE THE FIRST JSON FILE
+    const getJsonFirst = function(){
         $.ajax('./data/page-1.json', {method: 'get', dataType: 'JSON'}).then(data => {
-            console.log(data);
+            // console.log(data);
             data.forEach(value => {
-                let galleryPicture = new Gallery(value)
-                console.log(galleryPicture);
-                galleryPicture.render();
-                galleryPicture.renderFilter();
+                let galleryPictureOne = new Gallery(value)
+                // console.log(galleryPictureOne);
+                galleryPictureOne.render();
+                galleryPictureOne.renderFilter();
             })
         })
     }
-    getJson();
+    getJsonFirst();
+
+    // TO GET THE INFO INSIDE THE SECOND JSON FILE
+    const getJsonSecond = function(){
+        $.ajax('./data/page-2.json', {method: 'get', dataType: 'JSON'}).then(data => {
+            console.log(data);
+            data.forEach(value => {
+                let galleryPictureTwo = new Gallery(value)
+                // console.log(galleryPictureTwo);
+                galleryPictureTwo.render();
+                galleryPictureTwo.renderFilter();
+            })
+        })
+    }
+    //Event listener for page one button
+    $('#firstPageButton').on('click',() =>{
+        $('section').remove();
+        $('option:not(:first)').remove();
+        existingKeywords = [];
+        getJsonFirst();
+    })
+
+    //Event listener for page two button
+    $('#secondPageButton').on('click',() =>{
+        $('section').remove();
+        $('option:not(:first)').remove();
+        existingKeywords = [];
+        getJsonSecond();
+    })
+
+
     //Event listener for the filter
-    $('select').on('change', function(){
+    $('select').on('change', () =>{
         $('section').removeClass('visible');
         let $buttonValue = $('select option:selected').val();
+        if ($buttonValue === 'default'){
+            $('section').addClass('visible');
+        }
         $(`[class*=${$buttonValue}]`).addClass('visible');        
     })
 });
